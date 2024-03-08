@@ -14,7 +14,7 @@ def dets():
 
 def login(request):
     global message   
-    template = loader.get_template('login.html')
+    template = loader.get_template('dashboard.html')
     try:
         message1 = message[views.get_ip(request)]
     except KeyError:
@@ -36,14 +36,12 @@ def login_check_student(request):
             unt = i['unit']
             eid = i['emp_id']
             phone = i['phone']
+            user_mail = i['email']
             ip = views.get_ip(request)    
             details[ip] = [usr,nme,unt,eid,phone]
             detail = [ip,usr,nme,eid,unt]
-            logger.info(detail)
             message[views.get_ip(request)] = ''
-            if usr.lower() ==  'admin':
-                if nme.lower() == 'manav':
-                    send_mail(subject='Login of superuser',message=f'From {ip}',recipient_list=['manavsuresh.04@gmail.com'],fail_silently=True,from_email=settings.EMAIL_HOST_USER)
+            send_mail(subject='Login of your Lingua Connect Account',message=f'From {ip}',recipient_list=[user_mail],fail_silently=True,from_email=settings.EMAIL_HOST_USER)
 
             return HttpResponseRedirect('/index/todo/')
     message[views.get_ip(request)] = 'Wrong Credentials!!'

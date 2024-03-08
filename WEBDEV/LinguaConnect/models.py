@@ -11,7 +11,6 @@ class Teacher_Credentials(models.Model):
     u_id = models.CharField(max_length=255,unique=True,blank=False,primary_key=True)
     password = models.CharField(max_length=255,default='1234')
     exp = models.CharField(max_length=255,blank=False,default='Advanced')
-    dept = models.CharField(max_length=255,default='Client',blank=False)
     status = models.CharField(max_length=50,default='Active',auto_created=True,blank=False)
 
 
