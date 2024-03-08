@@ -43,7 +43,7 @@ def login_check_student(request):
             message[views.get_ip(request)] = ''
             send_mail(subject='Login of your Lingua Connect Account',message=f'From {ip}',recipient_list=[user_mail],fail_silently=True,from_email=settings.EMAIL_HOST_USER)
 
-            return HttpResponseRedirect('/index/todo/')
+            return HttpResponseRedirect('/index/')
     message[views.get_ip(request)] = 'Wrong Credentials!!'
     return HttpResponseRedirect('/')
 
