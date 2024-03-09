@@ -1,7 +1,7 @@
-TRINIT_BetterCallBytes_DEV
-TRINIT Hackathon DEV02 - LinguaConnect
-Team name: BetterCallBytes
-
+TRINIT_BetterCallBytes_DEV \n
+TRINIT Hackathon DEV02 - LinguaConnect \n
+Team name: BetterCallBytes \n
+\n
 Team Members:
 1) S.Manav
 2) Arnav Jain
