@@ -55,19 +55,12 @@ def login_check_student(request):
     login_vals = SCreds.objects.all().filter(status='Active').values()
     for i in login_vals:
         if i['u_id'] == a and i['password'] == b:
-            usr = i['dept']
             nme = i['name']
-            unt = i['unit']
-            eid = i['emp_id']
-            phone = i['phone']
-            user_mail = i['email']
             ip = views.get_ip(request)    
-            details[ip] = [usr,nme,unt,eid,phone]
-            detail = [ip,usr,nme,eid,unt]
+            details[ip] = [nme]
             message[views.get_ip(request)] = ''
-            send_mail(subject='Login of your Lingua Connect Account',message=f'From {ip}',recipient_list=[user_mail],fail_silently=True,from_email=settings.EMAIL_HOST_USER)
 
-            return HttpResponseRedirect('/index/')
+            return HttpResponseRedirect('/student/dashboard')
     message[views.get_ip(request)] = 'Wrong Credentials!!'
     return HttpResponseRedirect('/')
 
@@ -80,9 +73,7 @@ def login_check_teacher(request):
         if i['u_id'] == a and i['password'] == b:
             ip = views.get_ip(request)  
             nme = i['name']
-            details[ip] = []
             details[ip] = [nme]
-            detail = [ip,nme]
             message[views.get_ip(request)] = ''
             
             return HttpResponseRedirect('/teacher/dashboard')

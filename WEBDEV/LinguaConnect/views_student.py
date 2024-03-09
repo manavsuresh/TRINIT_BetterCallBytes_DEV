@@ -16,9 +16,9 @@ def dashboard(request):
     ip = views.get_ip(request)
     try:
         user = views_login.dets()[ip][0]
-        user =views_login.dets()[ip][1]
+        # user =views_login.dets()[ip][1]
     except KeyError:
         return HttpResponseRedirect('/')
     
     content = {}
-    return content,template
+    return HttpResponse(template.render(content,request))

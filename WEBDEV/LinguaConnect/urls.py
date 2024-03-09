@@ -27,5 +27,5 @@ urlpatterns = [
     path('teacher/register_edit/done/<str:u_id>',log.edit_register_process_student,name='teacher_regedit_process'),
     path('register/process/',log.process_register,name='process'),
     path('teacher/dashboard/',teacher.dashboard,name="Teacher_Dashboard"),
-    path('teacher/dashboard/',student.dashboard,name="Student_Dashboard"),
+    path('student/dashboard/',student.dashboard,name="Student_Dashboard"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
