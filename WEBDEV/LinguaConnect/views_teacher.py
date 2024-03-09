@@ -16,10 +16,18 @@ def dashboard(request):
     ip = views.get_ip(request)
     try:
         name = views_login.dets()[ip][0]
+        ID = views_login.dets()[ip][1]
     except KeyError:
         return HttpResponseRedirect('/')
-    
-    content = {}
+    languages = Teacher.objects.all().values()
+    languages = languages.filter(Teacher_ID = ID)
+    classes_sch = Classes.objects.all().values()
+    Classes_sch = Classes_sch.filter(Teacher=name)
+    Classes_sch = Classes_sch.filter(Class_Date = date.today())
+    content = {
+        'language_prof' : languages,
+        'classes' : classes_sch, 
+    }
     return HttpResponse(template.render(content,request))
 
 def add_language(request):
@@ -34,6 +42,12 @@ def add_language(request):
     return HttpResponse(template.render(content,request))
 
 def add_language_process(request):
+    ip = views.get_ip(request)
+    Lang = request.POST['']
+    ID = views_login.dets()[ip][1]
+    prof = request.POST['']
+    comm = Teacher(Teacher_ID=ID,Language=Lang,Proficiency=prof)
+    comm.save()
     return HttpResponseRedirect('/teacher/dashboard/')
 
 def add_class(request):
