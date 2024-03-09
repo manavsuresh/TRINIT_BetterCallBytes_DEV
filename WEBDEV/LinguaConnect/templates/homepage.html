@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
     <style>
         body {
             margin: 0;
@@ -98,7 +99,7 @@
             padding: 10px;
             height: 82vh;
             width: 100vw;
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url("{% static 'Resources/pexels-karolina-grabowska-4218701.jpg' %}");
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%), url("{% static 'resources/pexels-karolina-grabowska-4218701.jpg' %}");
             background-repeat: no-repeat;
             background-size: cover;
             background-position-y: center;
@@ -126,7 +127,7 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="{% static 'Resources/logo.jpeg' %}" alt="">
+                <img src="{% static 'resources/logo.jpeg' %}" alt="">
             </div>
             <div class="right">
 
@@ -149,8 +150,8 @@
     </header>
     <main>
         <div class="select">
-            <div class="tutor"><img id="tutor_image" src="{% static 'Resources/Subject 8.png' %}" alt="">Tutor</div>
-            <div class="student"><img id="student_image" src="{% static 'Resources/Subject 2.png' %}Resources/Subject 2.png" alt="">Student</div>
+            <div class="tutor"><img id="tutor_image" src="{% static 'resources/Subject8.png' %}" alt="">Tutor</div>
+            <div class="student"><img id="student_image" src="{% static 'resources/Subject2.png' %}" alt="">Student</div>
         </div>
     </main>
 
