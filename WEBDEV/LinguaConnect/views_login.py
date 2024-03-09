@@ -81,10 +81,7 @@ def login_check_teacher(request):
     return HttpResponseRedirect('/')
 
 def logout(request):
-    global usr,nme,details,message,unt
-    usr = None
-    nme = None
-    unt = None
+    global details,message
     try:
         del details[views.get_ip(request)]
     except KeyError:
