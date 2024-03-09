@@ -4,7 +4,7 @@ from datetime import datetime,date
 # Create your models here.
 class Teacher_Credentials(models.Model):
     name = models.CharField(max_length=255,blank=False)
-    teacher_id = models.CharField(max_length=20,blank=False,default="Not Given")
+    teacher_id = models.AutoField(max_length=255,blank=False,unique=True)
     email = models.CharField(max_length=255,default='Not Given')
     phone = models.CharField(max_length=50,default='Not Given',blank=False)
     u_id = models.CharField(max_length=255,unique=True,blank=False,primary_key=True)
@@ -14,7 +14,7 @@ class Teacher_Credentials(models.Model):
 
 class Student_Credentials(models.Model):
     name = models.CharField(max_length=255,blank=False)
-    student_id = models.CharField(max_length=20,blank=False,default="Not Given")
+    student_id = models.AutoField(max_length=255,blank=False,unique=True)
     email = models.CharField(max_length=255,default='Not Given')
     phone = models.CharField(max_length=50,default='Not Given',blank=False)
     u_id = models.CharField(max_length=255,unique=True,blank=False,primary_key=True)
