@@ -14,7 +14,7 @@ def dets():
 
 def login(request):
     global message   
-    template = loader.get_template('dashboard.html')
+    template = loader.get_template('homepage.html')
     try:
         message1 = message[views.get_ip(request)]
     except KeyError:
