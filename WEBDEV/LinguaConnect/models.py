@@ -12,7 +12,7 @@ class Teacher_Credentials(models.Model):
     password = models.CharField(max_length=255,default='1234')
     exp = models.CharField(max_length=255,blank=False,default='Advanced')
     budget = models.CharField(max_length=255,blank=False,default='0')
-    meeting_length = models.Charfield(max_length=255,blank=False,default='0000') #[45,60,90,120]
+    meeting_length = models.CharField(max_length=255,blank=False,default='0000') #[45,60,90,120]
     status = models.CharField(max_length=50,default='Active',auto_created=True,blank=False)
 
 
