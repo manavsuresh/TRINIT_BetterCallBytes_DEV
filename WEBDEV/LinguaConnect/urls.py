@@ -10,8 +10,8 @@ from django.conf.urls.static import static
 #For UI output
 urlpatterns = [
     path('',log.login,name='login'),
-    path('/student/',log.student_login,name="Student_login"),
-    path('/teacher/',log.teacher_login,name="Student_login"),
+    path('student/',log.student_login,name="Student_login"),
+    path('teacher/',log.teacher_login,name="Student_login"),
     path('student/login_check/',log.login_check_student,name='student_check'),
     path('teacher/login_check/',log.login_check_teacher,name='teacher_check'),
     path('register/',log.register,name='register'),
