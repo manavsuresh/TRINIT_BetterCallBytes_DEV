@@ -13,6 +13,7 @@ urlpatterns = [
     path('student/login_check/',log.login_check_student,name='student_check'),
     path('teacher/login_check/',log.login_check_teacher,name='teacher_check'),
     path('register/',log.register,name='register'),
+    path('teacher/register_edit/',log.edit_register_student,name='student_regedit'),
     path('register/process/',log.process_register,name='process'),
     path('teacher/dashboard/',teacher.dashboard,name="Teacher_Dashboard")
     path('teacher/dashboard/',student.dashboard,name="Student_Dashboard")
