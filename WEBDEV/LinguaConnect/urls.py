@@ -28,4 +28,8 @@ urlpatterns = [
     path('register/process/',log.process_register,name='process'),
     path('teacher/dashboard/',teacher.dashboard,name="Teacher_Dashboard"),
     path('student/dashboard/',student.dashboard,name="Student_Dashboard"),
+    path('student/dashboard/logout/',log.logout,name='logout'),
+    path('teacher/dashboard/logout/',log.logout,name='logout'),
+
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
