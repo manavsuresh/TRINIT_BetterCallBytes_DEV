@@ -8,7 +8,7 @@ from . import views
 from django.conf import settings
 from django.core.mail import send_mail
 message = {}
-
+details = {}
 def dets():
     return details
 
@@ -23,6 +23,30 @@ def login(request):
         'message' : message1,
     }
     return HttpResponse(template.render(mess,request))
+def student_login(request):
+    global message
+    template = loader.get_template('student_login.html')
+    try:
+        message1 = message[views.get_ip(request)]
+    except KeyError:
+        message1 = ''
+    mess = {
+        'message' : message1,
+    }
+    return HttpResponse(template.render(mess,request))
+
+def teacher_login(request):
+    global message
+    template = loader.get_template('teacher_login.html')
+    try:
+        message1 = message[views.get_ip(request)]
+    except KeyError:
+        message1 = ''
+    mess = {
+        'message' : message1,
+    }
+    return HttpResponse(template.render(mess,request))
+
 
 def login_check_student(request):
     global usr,nme,details,message,unt
@@ -82,20 +106,17 @@ def register(request):
 
 def process_register(request):
     global message
-    a = request.POST['Name']
-    b = request.POST['UID']
-    h = request.POST['EID']
-    e = request.POST['Email']
-    g = request.POST['Phoneno']
+    a = request.POST['name']
+    b = request.POST['username']
+    e = request.POST['email']
+    g = request.POST['phoneNumber']
     c = request.POST['password']
-    d = request.POST['department']
-    f = request.POST['unit']
     role = request.POST['role']
-    if role == 'teacher':
-        creds = TCreds(name=a,u_id=b,emp_id=h,password=c,dept=d,email=e,phone=g,)
+    if role == 'tutor':
+        creds = TCreds(name=a,u_id=b,password=c,email=e,phone=g,)
         creds.save()
     elif role == 'student':
-        creds = SCreds(name=a,u_id=b,emp_id=h,password=c,dept=d,email=e,phone=g,)
+        creds = SCreds(name=a,u_id=b,password=c,email=e,phone=g,)
         creds.save()
     # message[views.get_ip(request)] = 'Registered Sucessfully!!'
     

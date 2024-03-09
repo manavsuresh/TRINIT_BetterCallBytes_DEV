@@ -10,9 +10,12 @@ from django.conf.urls.static import static
 #For UI output
 urlpatterns = [
     path('',log.login,name='login'),
+    path('/student/',log.student_login,name="Student_login"),
+    path('/teacher/',log.teacher_login,name="Student_login"),
     path('student/login_check/',log.login_check_student,name='student_check'),
     path('teacher/login_check/',log.login_check_teacher,name='teacher_check'),
     path('register/',log.register,name='register'),
+    path('register/process/',log.process_register,name='register_process'),
     path('teacher/register_edit/<str:u_id>',log.edit_register_student,name='student_regedit'),
     path('teacher/register_edit/done/<str:u_id>',log.edit_register_process_student,name='student_regedit_process'),
 
