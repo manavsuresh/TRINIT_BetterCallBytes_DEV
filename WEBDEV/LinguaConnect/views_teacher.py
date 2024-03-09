@@ -14,11 +14,12 @@ def dashboard(request):
     template = loader.get_template('teacher_dashboard.html')
     ip = views.get_ip(request)
     try:
-        user = views_login.dets()[ip][0]
-        user =views_login.dets()[ip][1]
+        name = views_login.dets()[ip][0]
+        #user =views_login.dets()[ip][1]
     except KeyError:
         return HttpResponseRedirect('/')
     
     content = {}
-    return content,template
+    # return content,template
+    return HttpResponse(template.render(content,request))
 

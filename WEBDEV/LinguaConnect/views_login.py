@@ -78,13 +78,14 @@ def login_check_teacher(request):
     login_vals = TCreds.objects.all().filter(status='Active').values()
     for i in login_vals:
         if i['u_id'] == a and i['password'] == b:
+            ip = views.get_ip(request)  
+            nme = i['name']
             details[ip] = []
-            ip = views.get_ip(request)    
-            details[ip] = [nme,usr]
-            detail = [ip,nme,usr,]
+            details[ip] = [nme]
+            detail = [ip,nme]
             message[views.get_ip(request)] = ''
             
-            return HttpResponseRedirect('/index/')
+            return HttpResponseRedirect('/teacher/dashboard')
     message[views.get_ip(request)] = 'Wrong Credentials!!'
     return HttpResponseRedirect('/')
 
