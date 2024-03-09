@@ -25,7 +25,7 @@ def login(request):
     return HttpResponse(template.render(mess,request))
 def student_login(request):
     global message
-    template = loader.get_template('student_login.html')
+    template = loader.get_template('login_student.html')
     try:
         message1 = message[views.get_ip(request)]
     except KeyError:
@@ -37,7 +37,7 @@ def student_login(request):
 
 def teacher_login(request):
     global message
-    template = loader.get_template('teacher_login.html')
+    template = loader.get_template('login_teacher.html')
     try:
         message1 = message[views.get_ip(request)]
     except KeyError:
