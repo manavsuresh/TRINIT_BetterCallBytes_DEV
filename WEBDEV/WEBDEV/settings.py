@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import creds
+# import creds
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,16 +127,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #---------------------------Mailing---------------#
-ADMINS = [
-    ('Manav','manavsuresh.04@gmail.com'),
-]
-MANAGERS = [
-    ('Manav','manavsuresh.04@gmail.com'),
-]
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
-# EMAIL_USE_TLS = True
-EMAIL_USE_SSL = True
-EMAIL_HOST_USER = creds.user
-EMAIL_HOST_PASSWORD = creds.password
+# ADMINS = [
+#     ('Manav','manavsuresh.04@gmail.com'),
+# ]
+# MANAGERS = [
+#     ('Manav','manavsuresh.04@gmail.com'),
+# ]
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 465
+# # EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True
+# EMAIL_HOST_USER = creds.user
+# EMAIL_HOST_PASSWORD = creds.password

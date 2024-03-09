@@ -11,6 +11,8 @@ class Teacher_Credentials(models.Model):
     u_id = models.CharField(max_length=255,unique=True,blank=False,primary_key=True)
     password = models.CharField(max_length=255,default='1234')
     exp = models.CharField(max_length=255,blank=False,default='Advanced')
+    budget = models.Charfield(max_length=255,blank=False,default='0')
+    meeting_length = models.Charfield(max_length=255,blank=False,default='0000') #[45,60,90,120]
     status = models.CharField(max_length=50,default='Active',auto_created=True,blank=False)
 
 
