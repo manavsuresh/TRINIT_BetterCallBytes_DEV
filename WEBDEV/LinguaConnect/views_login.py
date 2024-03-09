@@ -7,7 +7,7 @@ from .models import Teacher_Credentials as TCreds
 from . import views
 from django.conf import settings
 from django.core.mail import send_mail
-
+message = {}
 
 def dets():
     return details
