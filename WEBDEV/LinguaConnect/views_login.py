@@ -75,3 +75,96 @@ def logout(request):
         pass
     message[views.get_ip(request)] = 'Logged out successfully!!'
     return HttpResponseRedirect('/')
+
+def register(request):
+    template = loader.get_template('register.html')
+    return HttpResponse(template.render({},request))
+
+def process_register(request):
+    global message
+    a = request.POST['Name']
+    b = request.POST['UID']
+    h = request.POST['EID']
+    e = request.POST['Email']
+    g = request.POST['Phoneno']
+    c = request.POST['password']
+    d = request.POST['department']
+    f = request.POST['unit']
+    role = request.POST['role']
+    if role == 'teacher':
+        creds = TCreds(name=a,u_id=b,emp_id=h,password=c,dept=d,email=e,phone=g,)
+        creds.save()
+    elif role == 'student':
+        creds = SCreds(name=a,u_id=b,emp_id=h,password=c,dept=d,email=e,phone=g,)
+        creds.save()
+    # message[views.get_ip(request)] = 'Registered Sucessfully!!'
+    
+    # return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')
+
+def edit_register_student(request,u_id):
+    template = loader.get_template('register_edit_student.html')
+    acc = SCreds.objects.get(u_id=u_id)
+    content = {
+        'Acc':acc,
+    }
+    return HttpResponse(template.render(content,request))
+
+def edit_register_process_student(request,u_id):
+    acc = SCreds.objects.get(u_id=u_id)
+    a = request.POST['Name']
+    b = request.POST['UID']
+    h = request.POST['EID']
+    e = request.POST['Email']
+    g = request.POST['Phoneno']
+    c = request.POST['password']
+    d = request.POST['department']
+    f = request.POST['unit']
+    i = request.POST['status']
+
+    acc.name= a
+    acc.u_id= b
+    acc.emp_id= h
+    acc.email= e
+    acc.phone= g
+    acc.password= c
+    acc.unit= f
+    acc.dept= d
+    acc.status= i
+
+    acc.save()
+    return HttpResponseRedirect('/student/dashboard/')
+
+def edit_register_teacher(request,u_id):
+    template = loader.get_template('register_edit_teacher.html')
+    acc = TCreds.objects.get(u_id=u_id)
+    content = {
+        'Acc':acc,
+    }
+    return HttpResponse(template.render(content,request))
+
+def edit_register_process_teacher(request,u_id):
+    acc = TCreds.objects.get(u_id=u_id)
+    a = request.POST['Name']
+    b = request.POST['UID']
+    h = request.POST['EID']
+    e = request.POST['Email']
+    g = request.POST['Phoneno']
+    c = request.POST['password']
+    d = request.POST['department']
+    f = request.POST['unit']
+    i = request.POST['status']
+
+    acc.name= a
+    acc.u_id= b
+    acc.emp_id= h
+    acc.email= e
+    acc.phone= g
+    acc.password= c
+    acc.unit= f
+    acc.dept= d
+    acc.status= i
+
+    acc.save()
+    return HttpResponseRedirect('/teacher/dashboard/')
+
