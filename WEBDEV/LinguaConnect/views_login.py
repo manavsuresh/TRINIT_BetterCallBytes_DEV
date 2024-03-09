@@ -56,8 +56,9 @@ def login_check_student(request):
     for i in login_vals:
         if i['u_id'] == a and i['password'] == b:
             nme = i['name']
+            id = i['student_id']
             ip = views.get_ip(request)    
-            details[ip] = [nme]
+            details[ip] = [nme,id]
             message[views.get_ip(request)] = ''
 
             return HttpResponseRedirect('/student/dashboard')
@@ -73,7 +74,8 @@ def login_check_teacher(request):
         if i['u_id'] == a and i['password'] == b:
             ip = views.get_ip(request)  
             nme = i['name']
-            details[ip] = [nme]
+            id = i['teacher_id']
+            details[ip] = [nme,id]
             message[views.get_ip(request)] = ''
             
             return HttpResponseRedirect('/teacher/dashboard')
