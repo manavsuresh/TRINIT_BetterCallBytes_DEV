@@ -202,22 +202,22 @@
 <body>
     <header>
         <nav>
-            <span class="logout"><a href="/lougout/">Logout</a></span>
+            <span class="logout"><a href="logout/">Logout</a></span>
             <span>
                 <h1>Lingua Connect</h1>
             </span>
             <span>
                 <h1>Tutor Dashboard</h1>
             </span>
-            <span><img id="logo" src="{% 'resources/logo.jpeg' %}" alt=""></span>
+            <span><img id="logo" src="{% static 'resources/logo.jpeg' %}" alt=""></span>
         </nav>
     </header>
     <main>
         <aside>
             <div class="MyInfo">
-                <img src="resources/user.png" id="user" alt="">
-                <span>Name<br></span>
-                <span>Username</span>
+                <img src="{% static 'resources/user.png' %}" id="user" alt="">
+                <span>ID: {{Acc.teacher_id}}<br></span>
+                <span>Name: {{Acc.name}}</span>
                 <div class="flashcard">
                     <h3>Today's Classes</h3>
                 </div>
@@ -226,9 +226,9 @@
         </aside>
         <article>
             <section>
-                <div class="meet"><img src="resources/web.png" class="boxes" alt="">JOIN CLASS</div>
-                <div class="add_course"><a href="add_class.html"><img src="Resources/Plus.jpeg" class="boxes"  alt=""></a><span>Add Class</span></div>
-                <div class="upload_resources"><img src="Resources/book2.png" class="boxes" alt="">Upload Resources</div>
+                <div class="meet"><img src="{% static 'resources/web.png' %}" class="boxes" alt="">JOIN CLASS</div>
+                <div class="add_course"><a href="add_class/"><img src="{% static 'resources/Plus.jpeg' %}" class="boxes"  alt=""></a><span>Add Class</span></div>
+                <div class="upload_resources"><a href="add_language/"><img src="{% static 'resources/book2.png' %}" class="boxes" alt=""></a><span>Add Language</span></div>
             </section>
             <section>
                 <div class="time_table">

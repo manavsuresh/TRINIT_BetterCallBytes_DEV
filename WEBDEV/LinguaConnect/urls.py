@@ -30,6 +30,8 @@ urlpatterns = [
     path('student/dashboard/',student.dashboard,name="Student_Dashboard"),
     path('student/dashboard/logout/',log.logout,name='logout'),
     path('teacher/dashboard/logout/',log.logout,name='logout'),
+    path('logout/',log.logout,name='logout'),
+
 
     path('teacher/dashboard/add_language/',teacher.add_language,name="Add Language"),
     path('teacher/dashboard/add_language/process/',teacher.add_language_process,name="Add_Language_Process"),
