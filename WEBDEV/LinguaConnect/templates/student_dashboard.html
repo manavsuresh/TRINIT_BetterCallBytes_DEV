@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(186, 241, 255);
+        }
+
+        nav {
+            background-color: rgb(246, 255, 253);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px;
+            border-radius: 30px;
+        }
+        main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .MyInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(246, 255, 253);
+            height: 80vh;
+            width: 200px;
+            border-radius: 30px;
+        }
+
+        .meet{
+            background-color: rgb(246, 255, 253);
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 30px;
+        }
+
+        /* .time_table {
+            background-color: rgb(246, 255, 253);
+            width: 50vw;
+            height: 300px;
+            margin: 10px;
+            border-radius: 30px;
+        } */
+
+        footer {
+            background-color: rgb(246, 255, 253);
+        }
+
+        .foot {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .time_table {
+            background-color: rgb(246, 255, 253);
+            width: 70vw;
+            height: 300px;
+            margin: 10px auto;
+            border-radius: 30px;
+            overflow-x: auto;
+            /* Enable horizontal scrolling for small screens */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .time_slot {
+            margin: 2px;
+
+            width: 10%;
+            /* Adjust as needed */
+            height: 30px;
+            /* Adjust as needed */
+            background-color: #ccc;
+        }
+        #search{
+            width: 400px;
+            height: 40px;
+            border:2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            background-color: white;
+        }
+        #search_button:hover{
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border:2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            background-color: white;
+        }
+        #search_button{
+            width: 40px;
+            height: 40px;
+            border:2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            background-color: white;
+        }
+
+        @media only screen and (min-width: 768px) {
+            #aside_slider {
+                display: none;
+            }
+
+            #logo {
+                width: 80px;
+            }
+        }
+
+
+        @media only screen and (max-width: 768px) {
+            main {
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .MyInfo {
+                display: none;
+            }
+
+            #aside_slider {
+                position: fixed;
+                top: 300px;
+                left: -15px;
+                width: 50px;
+                height: 30px;
+                background-color: rgb(246, 255, 253);
+                border-radius: 20px;
+                border: none
+            }
+
+            #logo {
+                display: none;
+            }
+        }
+        .logout{
+            background-color: rgb(213, 228, 243);
+            border-radius: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="logout"><a href="/logout/">Logout</a></span>
+            <span>
+                <h1>Lingua Connect</h1>
+            </span>
+            <span>
+                <h1>Dashboard</h1>
+            </span>
+            <span><img id="logo" src="{% static 'Resources/logo.jpeg'%}" alt=""></span>
+        </nav>
+    </header>
+    <main>
+        <aside>
+            <div class="MyInfo"></div>
+            <button id="aside_slider"> ></button>
+        </aside>
+        <article>
+            <section>
+                <div class="meet"></div>
+                <div class="search_feature">
+                    <input type="text" id="search" name="search" placeholder="Enter the Language That you want learn"><span><button type="button" onclick="search()" id="search_button">Go</button></span>
+
+                </div>          
+            </section>
+            <section>
+                <div class="time_table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th colspan="4">Morning (8am - 12pm)</th>
+                                <th colspan="6">Afternoon (2pm - 8pm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                                <td class="time_slot"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </article>
+    </main>
+    <footer>
+        <div class="foot">
+            <span>
+                <h3>BetterCallBytes</h3>
+            </span>
+            <span>
+                <h3>Lingua Connect</h3>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

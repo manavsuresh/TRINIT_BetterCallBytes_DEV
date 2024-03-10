@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard</title>
+    <title>Dashboard</title>
     {% load static %}
     <style>
         body {
@@ -21,8 +21,6 @@
             margin: 10px;
             border-radius: 30px;
         }
-
-
 
         main {
             display: flex;
@@ -59,7 +57,7 @@
             justify-content: space-around;
             align-items: center;
             background-color: rgb(246, 255, 253);
-            height: 80vh;
+            height: 60vh;
             width: 200px;
             border-radius: 30px;
         }
@@ -72,6 +70,10 @@
             height: 200px;
             margin: 10px;
             border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* .time_table {
@@ -164,31 +166,69 @@
                 display: none;
             }
         }
+        .logout{
+            background-color: rgb(213, 228, 243);
+            border-radius: 20px;
+            padding: 10px;
+        }
+        .boxes:hover{
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        .boxes{
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        #user{
+            width:60px
+        }
+        .flashcard{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(246, 255, 253);
+            height:200px;
+            width: 150px;
+            border-radius: 30px;
+            background-color: #ccc;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <nav>
+            <span class="logout"><a href="/lougout/">Logout</a></span>
             <span>
                 <h1>Lingua Connect</h1>
             </span>
             <span>
                 <h1>Tutor Dashboard</h1>
             </span>
-            <span><img id="logo" src="{% static 'resources/logo.jpeg' %}" alt=""></span>
+            <span><img id="logo" src="{% 'resources/logo.jpeg' %}" alt=""></span>
         </nav>
     </header>
     <main>
         <aside>
-            <div class="MyInfo"></div>
+            <div class="MyInfo">
+                <img src="resources/user.png" id="user" alt="">
+                <span>Name<br></span>
+                <span>Username</span>
+                <div class="flashcard">
+                    <h3>Today's Classes</h3>
+                </div>
+            </div>
             <button id="aside_slider"> ></button>
         </aside>
         <article>
             <section>
-                <div class="meet"></div>
-                <div class="add_course"></div>
-                <div class="upload_resources"></div>
+                <div class="meet"><img src="resources/web.png" class="boxes" alt="">JOIN CLASS</div>
+                <div class="add_course"><a href="add_class.html"><img src="Resources/Plus.jpeg" class="boxes"  alt=""></a><span>Add Class</span></div>
+                <div class="upload_resources"><img src="Resources/book2.png" class="boxes" alt="">Upload Resources</div>
             </section>
             <section>
                 <div class="time_table">
