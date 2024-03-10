@@ -196,6 +196,9 @@
             border-radius: 30px;
             background-color: #ccc;
         }
+        ol {
+            word-wrap: break-word;
+        }
     </style>
 </head>
 
@@ -219,12 +222,8 @@
                 <span>ID: {{Acc.teacher_id}}<br></span>
                 <span>Name: {{Acc.name}}</span>
                 <div class="flashcard">
-                    <h3>Proficiency</h3>
-                    <ol>
-                    {% for i in language_prof %}
-                    <li>{{i.Language}} - {{i.Proficiency}}</li>
-                    {% endfor %}
-                </ol>
+                    <h3>Today's Classes</h3>
+
                 </div>
             </div>
             <button id="aside_slider"> ></button>
