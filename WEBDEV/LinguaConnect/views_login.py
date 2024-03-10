@@ -49,7 +49,7 @@ def teacher_login(request):
 
 
 def login_check_student(request):
-    global usr,nme,details,message,unt
+    global nme,details,message
     a = request.POST['UID']
     b = request.POST['password']
     login_vals = SCreds.objects.all().filter(status='Active').values()
@@ -61,7 +61,7 @@ def login_check_student(request):
             details[ip] = [nme,id]
             message[views.get_ip(request)] = ''
 
-            return HttpResponseRedirect('/student/dashboard')
+            return HttpResponseRedirect('/student/dashboard/')
     message[views.get_ip(request)] = 'Wrong Credentials!!'
     return HttpResponseRedirect('/')
 
