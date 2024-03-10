@@ -111,72 +111,34 @@ def process_register(request):
         creds.save()
     # message[views.get_ip(request)] = 'Registered Sucessfully!!'
     
-    # return HttpResponseRedirect('/')
     return HttpResponseRedirect('/')
 
-def edit_register_student(request,u_id):
+def edit_register_student(request):
+    ip = views.get_ip(request)
+    try:
+        ID = details[ip][1]
+    except KeyError:
+        return HttpResponseRedirect('/student/dashboard/')
+    
     template = loader.get_template('register_edit_student.html')
-    acc = SCreds.objects.get(u_id=u_id)
+    acc = SCreds.objects.get(student_id=ID)
     content = {
         'Acc':acc,
     }
     return HttpResponse(template.render(content,request))
 
 def edit_register_process_student(request,u_id):
-    acc = SCreds.objects.get(u_id=u_id)
-    a = request.POST['Name']
-    b = request.POST['UID']
-    h = request.POST['EID']
-    e = request.POST['Email']
-    g = request.POST['Phoneno']
-    c = request.POST['password']
-    d = request.POST['department']
-    f = request.POST['unit']
-    i = request.POST['status']
-
-    acc.name= a
-    acc.u_id= b
-    acc.emp_id= h
-    acc.email= e
-    acc.phone= g
-    acc.password= c
-    acc.unit= f
-    acc.dept= d
-    acc.status= i
-
-    acc.save()
     return HttpResponseRedirect('/student/dashboard/')
 
 def edit_register_teacher(request,u_id):
+    ip = views.get_ip(request)
     template = loader.get_template('register_edit_teacher.html')
-    acc = TCreds.objects.get(u_id=u_id)
+    acc = TCreds.objects.get(teacher_id=details[ip][0])
     content = {
         'Acc':acc,
     }
     return HttpResponse(template.render(content,request))
 
 def edit_register_process_teacher(request,u_id):
-    acc = TCreds.objects.get(u_id=u_id)
-    a = request.POST['Name']
-    b = request.POST['UID']
-    h = request.POST['EID']
-    e = request.POST['Email']
-    g = request.POST['Phoneno']
-    c = request.POST['password']
-    d = request.POST['department']
-    f = request.POST['unit']
-    i = request.POST['status']
-
-    acc.name= a
-    acc.u_id= b
-    acc.emp_id= h
-    acc.email= e
-    acc.phone= g
-    acc.password= c
-    acc.unit= f
-    acc.dept= d
-    acc.status= i
-
-    acc.save()
     return HttpResponseRedirect('/teacher/dashboard/')
 

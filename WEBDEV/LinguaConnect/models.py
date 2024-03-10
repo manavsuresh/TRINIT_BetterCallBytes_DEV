@@ -34,5 +34,5 @@ class Classes(models.Model):
 class Teacher(models.Model):
     Teacher_ID = models.CharField(max_length=255,blank=False,unique=True,primary_key=True)
     Language = models.CharField(max_length=255,blank=False,default="-")
-    Profeciency = models.CharField(max_length=255,blank=False,default="Advanced")
+    Proficiency = models.CharField(max_length=255,blank=False,default="Elementry")
 

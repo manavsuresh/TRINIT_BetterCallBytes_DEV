@@ -7,26 +7,28 @@ from .models import Teacher_Credentials as TCreds
 from .models import Classes,Teacher
 from . import views
 from . import views_login
-from . import views_teacher
 from django.conf import settings
 from django.core.mail import send_mail
 
 def dashboard(request):
+    global classes_sch
     template = loader.get_template('teacher_dashboard.html')
     ip = views.get_ip(request)
+    # classes_sch = Classes.objects.all().values()
+    languages = Teacher.objects.all().values()
     try:
-        name = views_login.dets()[ip][0]
+        nam = views_login.dets()[ip][0]
         ID = views_login.dets()[ip][1]
     except KeyError:
         return HttpResponseRedirect('/')
-    languages = Teacher.objects.all().values()
     languages = languages.filter(Teacher_ID = ID)
-    classes_sch = Classes.objects.all().values()
-    Classes_sch = Classes_sch.filter(Teacher=name)
-    Classes_sch = Classes_sch.filter(Class_Date = date.today())
+    # Classes_s = Classes_sch.filter(name=nam)
+    # Classes_sch = Classes_s.filter(Class_Date = date.today())
+    Acc_Details = TCreds.objects.get(teacher_id=ID)
     content = {
         'language_prof' : languages,
-        'classes' : classes_sch, 
+        # 'classes' : classes_sch, 
+        'Acc' : Acc_Details,
     }
     return HttpResponse(template.render(content,request))
 
@@ -43,9 +45,9 @@ def add_language(request):
 
 def add_language_process(request):
     ip = views.get_ip(request)
-    Lang = request.POST['']
+    Lang = request.POST['department']
     ID = views_login.dets()[ip][1]
-    prof = request.POST['']
+    prof = request.POST['unit']
     comm = Teacher(Teacher_ID=ID,Language=Lang,Proficiency=prof)
     comm.save()
     return HttpResponseRedirect('/teacher/dashboard/')

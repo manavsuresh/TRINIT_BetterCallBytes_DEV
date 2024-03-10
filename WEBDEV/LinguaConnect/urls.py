@@ -31,10 +31,10 @@ urlpatterns = [
     path('student/dashboard/logout/',log.logout,name='logout'),
     path('teacher/dashboard/logout/',log.logout,name='logout'),
 
-    path('teacher/dashboard/add_language',teacher.add_language,name="Add Language"),
-    path('teacher/dashboard/add_language/process',teacher.add_language_process,name="Add_Language_Process"),
-    path('teacher/dashboard/add_class',teacher.add_class,name="Add_Class"),
-    path('teacher/dashboard/add_class_process',teacher.add_class_process,name="Add Class Process"),
+    path('teacher/dashboard/add_language/',teacher.add_language,name="Add Language"),
+    path('teacher/dashboard/add_language/process/',teacher.add_language_process,name="Add_Language_Process"),
+    path('teacher/dashboard/add_class/',teacher.add_class,name="Add_Class"),
+    path('teacher/dashboard/add_class/process/',teacher.add_class_process,name="Add Class Process"),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
