@@ -219,7 +219,12 @@
                 <span>ID: {{Acc.teacher_id}}<br></span>
                 <span>Name: {{Acc.name}}</span>
                 <div class="flashcard">
-                    <h3>Today's Classes</h3>
+                    <h3>Proficiency</h3>
+                    <ol>
+                    {% for i in language_prof %}
+                    <li>{{i.Language}} - {{i.Proficiency}}</li>
+                    {% endfor %}
+                </ol>
                 </div>
             </div>
             <button id="aside_slider"> ></button>
@@ -228,7 +233,7 @@
             <section>
                 <div class="meet"><img src="{% static 'resources/web.png' %}" class="boxes" alt="">JOIN CLASS</div>
                 <div class="add_course"><a href="add_class/"><img src="{% static 'resources/Plus.jpeg' %}" class="boxes"  alt=""></a><span>Add Class</span></div>
-                <div class="upload_resources"><a href="add_language/"><img src="{% static 'resources/book2.png' %}" class="boxes" alt=""></a><span>Add Language</span></div>
+                <div class="upload_resources"><a href="add_language/"><img src="{% static 'resources/book2.png' %}" class="boxes" alt=""></a><span>Add Language Proficiency</span></div>
             </section>
             <section>
                 <div class="time_table">
